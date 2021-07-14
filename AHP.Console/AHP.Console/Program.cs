@@ -19,6 +19,7 @@ namespace AHP.Console
             if (string.IsNullOrEmpty(input))
             {
                 msg = Core.AHP.Analysis(new double[4, 4] { { 1, 0.25, 2,0.3333 }, { 4, 1, 8,2 }, { 0.5,  0.125,1,0.2 },{ 3,0.5,5,1} });
+               // msg = Core.AHP.Analysis(new double[4, 4] { { 1, 2, 0.3333,3 }, { 0.5, 1, 0.3333,2 }, { 3, 3,1,4 },{ 0.3333,0.5,0.25,1} });
             }
             else
             {
@@ -47,7 +48,7 @@ namespace AHP.Console
                     }
                     rowIndex++;
                 } while (!string.IsNullOrEmpty(input));
-                if (matrix.Rank + 1 != matrix.GetLength(0))
+                if (!(matrix.Rank ==2&& matrix.GetLength(0) == matrix.GetLength(1)))
                 {
                     System.Console.WriteLine("行数和列数不同无法进行AHP计算 请重新输入当前行数据");
                     Main(args);
@@ -57,6 +58,8 @@ namespace AHP.Console
             }
             System.Console.WriteLine(msg);
             System.Console.ReadLine();
+            //重新开始下一次分析
+            Main(args);
         }
     }
 }

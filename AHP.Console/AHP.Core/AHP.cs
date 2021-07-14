@@ -125,7 +125,7 @@ namespace AHP.Core
             var rMax = CalcrMax(aws, ws);
             sb.AppendLine($"λMax为：{rMax}");
             //6.计算CI
-            var ci = Math.Round((rMax - matrixNormalObj.RowCount) * (matrixObj.RowCount - 1), keepFloorBit);
+            var ci = Math.Round((rMax - matrixNormalObj.RowCount) / (matrixObj.RowCount - 1), keepFloorBit);
             sb.AppendLine($"CI为：{ci}");
             //7.计算RI
             var ri = RI.ContainsKey(matrixNormalObj.RowCount) ? RI[matrixNormalObj.RowCount] : -1;
